@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import QuestionTimer from "./QuestionTimer.jsx";
 import Answers from "./Answers.jsx";
-import QUESTIONS from "../questions.js";
+import QUESTIONS from "../question.js";
 
 export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
   const [answer, setAnswer] = useState({
@@ -49,7 +49,7 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
   return (
     <div id="question">
       <QuestionTimer
-        key={timer}
+        key={timer} //when timer changes we recreate interval
         timeout={timer}
         onTimeout={answer.selectedAnswer === "" ? onSkipAnswer : null}
         mode={answerState}

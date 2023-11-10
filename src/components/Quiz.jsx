@@ -36,7 +36,7 @@ export default function Quiz() {
       <Question
         key={activeQuestionIndex}
         index={activeQuestionIndex}
-        selectedAnswer={userAnswers[userAnswers.length - 1]}
+        onSelectAnswer={handleSelectAnswer}
         onSkipAnswer={handleSkipAnswer}
       />
     </div>
