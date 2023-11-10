@@ -24,7 +24,7 @@ body {
   padding: 2rem;
   /* background: linear-gradient(180deg, #22182f 0%, #2c2437 100%); */
   background-color: #1d0433;
-  background-image: url("src/assets/background-img.jpg");
+  background-image: url("https://i.ibb.co/NKk6fGJ/background-img.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -556,5 +556,16 @@ header h2 {
     margin-left: 0.2rem;
     letter-spacing: 0.1rem;
     margin-top: 5px;
+  }
+
+  body {
+    margin: 0;
+    padding: 2rem;
+    /* background: linear-gradient(180deg, #22182f 0%, #2c2437 100%); */
+    background-color: #1d0433;
+    background-image: url("https://i.ibb.co/NKk6fGJ/background-img.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
   }
 }
