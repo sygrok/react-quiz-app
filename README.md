@@ -20,6 +20,5 @@ If you want to contribute to this project, follow these steps.
 4. Push to your fork and submit a pull request.
 
 ## Screenshots
-
-![Screenshot 1](https://i.ibb.co/kHbLLBL/Screenshot-1.png)
-![Screenshot 2](https://i.ibb.co/R65yvQs/Screenshot-2.png)
+![Screenshot 1](Screenshot_1.png)
+![Screenshot 2](Screenshot_2.png)  
