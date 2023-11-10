@@ -1,11 +1,14 @@
 import { useCallback, useState } from "react";
 import QUESTIONS from "../question.js";
 import quizCompleteImg from "../assets/quiz-complete.png";
-import QuestionTimer from "./QuestionTimer.jsx";
+import Question from "./Question.jsx";
 
 export default function Quiz() {
   const [userAnswers, setUserAnswers] = useState([]);
-  const activeQuestionIndex = userAnswers.length;
+  const [answerState, setAnswerState] = useState("");
+
+  const activeQuestionIndex =
+    answerState === "" ? userAnswers.length : userAnswers.length - 1;
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
   if (quizIsComplete) {
@@ -16,18 +19,29 @@ export default function Quiz() {
     );
   }
 
-  // shuffledAnswers should run after if check in order to prevent crash
-  const shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers];
-  shuffledAnswers.sort(() => Math.random() - 0.5); //Build in method 'sort()'
+  const handleSelectAnswer = useCallback(
+    function handleSelectAnswer(selectedAnswer) {
+      setAnswerState("answered");
+      setUserAnswers((prevData) => {
+        return [...prevData, selectedAnswer];
+      });
 
-  const handleSelectAnswer = useCallback(function handleSelectAnswer(
-    selectedAnswer
-  ) {
-    setUserAnswers((prevData) => {
-      return [...prevData, selectedAnswer];
-    });
-  },
-  []);
+      setTimeout(() => {
+        if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
+          //We check if the answer is right or not //Since the first answer of all questions are the right ones 'even though we are shuffling here' we pick the first one
+          setAnswerState("correct");
+        } else {
+          setAnswerState("wrong");
+        }
+
+        setTimeout(() => {
+          //reset
+          setAnswerState("");
+        }, 2000);
+      }, 1000);
+    },
+    [activeQuestionIndex]
+  );
 
   const handleSkipAnswer = useCallback(
     () => handleSelectAnswer(null),
@@ -36,21 +50,15 @@ export default function Quiz() {
 
   return (
     <div id="quiz">
-      <div id="question">
-        <QuestionTimer
-          key={activeQuestionIndex}
-          timeout={10000}
-          onTimeout={handleSkipAnswer} // if the time expires the answer is going to be null
-        />
-        <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-        <ul id="answers">
-          {shuffledAnswers.map((x) => (
-            <li className="answer" key={x}>
-              <button onClick={() => handleSelectAnswer(x)}>{x}</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Question
+        key={activeQuestionIndex}
+        questionText={QUESTIONS[activeQuestionIndex].text}
+        answers={QUESTIONS[activeQuestionIndex].answers}
+        onSelectAnswer={handleSelectAnswer}
+        answerState={answerState}
+        selectedAnswer={userAnswers[userAnswers.length - 1]}
+        onSkipAnswer={handleSkipAnswer}
+      />
     </div>
   );
 }
