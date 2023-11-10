@@ -18,19 +18,19 @@ export default function Summary({ userAnswers }) {
   return (
     <div id="summary">
       <img src={quizCompleteImg} />
-      <h2>Quiz Completed!</h2>
+      <h2>Sınav Tamamlandı!</h2>
       <div id="summary-stats">
         <p>
           <span className="number">{skippedAnswersShare}%</span>
-          <span className="text">Skipped</span>
+          <span className="text">Boş</span>
         </p>
         <p>
           <span className="number">{correctAnswersShare}%</span>
-          <span className="text">correct</span>
+          <span className="text">Doğru</span>
         </p>
         <p>
           <span className="number">{wrongAnswersShare}%</span>
-          <span className="text">false</span>
+          <span className="text">Yanlış</span>
         </p>
       </div>
       <ol>

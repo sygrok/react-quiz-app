@@ -4,7 +4,10 @@ export default function Header() {
   return (
     <header>
       <img src={logoImg} />
-      <h1>ReactQuiz</h1>
+      <h1>10 Kasım'a Özel</h1>
+      <hr />
+      <h1>Atatürk'ü Ne Kadar Tanıyorsunuz?</h1>
+      <h2>Ulu Önder Gazi Mustafa Kemal Atatürk'ün Anısına...</h2>
     </header>
   );
 }

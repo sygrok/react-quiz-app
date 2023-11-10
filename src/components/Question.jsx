@@ -34,8 +34,8 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
 
       setTimeout(() => {
         onSelectAnswer(answer);
-      }, 200);
-    }, 100);
+      }, 2000);
+    }, 1000);
   }
 
   let answerState = "";

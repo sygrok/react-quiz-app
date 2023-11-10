@@ -4,8 +4,10 @@ import Quiz from "./components/Quiz";
 function App() {
   return (
     <>
-      <Header />
-      <Quiz />
+      <div id="quiz">
+        <Header />
+        <Quiz />
+      </div>
     </>
   );
 }

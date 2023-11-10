@@ -28,13 +28,11 @@ export default function Quiz() {
   }
 
   return (
-    <div id="quiz">
-      <Question
-        key={activeQuestionIndex}
-        index={activeQuestionIndex}
-        onSelectAnswer={handleSelectAnswer}
-        onSkipAnswer={handleSkipAnswer}
-      />
-    </div>
+    <Question
+      key={activeQuestionIndex}
+      index={activeQuestionIndex}
+      onSelectAnswer={handleSelectAnswer}
+      onSkipAnswer={handleSkipAnswer}
+    />
   );
 }
