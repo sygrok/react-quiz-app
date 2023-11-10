@@ -4,20 +4,13 @@ import quizCompleteImg from "../assets/quiz-complete.png";
 import Question from "./Question.jsx";
 
 export default function Quiz() {
-  const [userAnswers, setUserAnswers] = useState([]);
   const [answerState, setAnswerState] = useState("");
+
+  const [userAnswers, setUserAnswers] = useState([]);
 
   const activeQuestionIndex =
     answerState === "" ? userAnswers.length : userAnswers.length - 1;
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
-
-  if (quizIsComplete) {
-    return (
-      <div id="summary">
-        <img src={quizCompleteImg} /> <h2>Quiz is complete!</h2>
-      </div>
-    );
-  }
 
   const handleSelectAnswer = useCallback(
     function handleSelectAnswer(selectedAnswer) {
@@ -37,7 +30,7 @@ export default function Quiz() {
         setTimeout(() => {
           //reset
           setAnswerState("");
-        }, 2000);
+        }, 1500);
       }, 1000);
     },
     [activeQuestionIndex]
@@ -47,6 +40,14 @@ export default function Quiz() {
     () => handleSelectAnswer(null),
     [handleSelectAnswer]
   );
+
+  if (quizIsComplete) {
+    return (
+      <div id="summary">
+        <img src={quizCompleteImg} /> <h2>Quiz is complete!</h2>
+      </div>
+    );
+  }
 
   return (
     <div id="quiz">
