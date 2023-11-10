@@ -4,7 +4,7 @@ import QUESTIONS from "../question";
 export default function Summary({ userAnswers }) {
   const skippedAnswers = userAnswers.filter((x) => x === null);
   const correctAnswers = userAnswers.filter(
-    (x, index) => x === QUESTIONS[index.x[0]]
+    (x, index) => x === QUESTIONS[index].answers[0]
   );
 
   const skippedAnswersShare = Math.round(
